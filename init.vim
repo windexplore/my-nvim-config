@@ -1,5 +1,7 @@
-let config_dir = "~/.config/nvim"
+""set t_Co=256
 
+
+let config_dir = "~/.config/nvim"
 let s:config_dir = expand('<sfile>:p:h')
 let s:config_lst = [
     \ 'basic',
@@ -8,12 +10,10 @@ let s:config_lst = [
     \ 'compile',
     \ 'coc'
 \ ]
-
 for s:item in s:config_lst
     exec 'source ' . s:config_dir . '/' . s:item . '.vim'
     " exec 'source ' . s:config_dir . 'viml/' . s:item . '.vim'
 endfor
-colorscheme vscode-dark
 
 " ==================
 " Plug
@@ -25,10 +25,18 @@ Plug 'itchyny/lightline.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'honza/vim-snippets'
 "Plug 'github.com/SirVer/ultisnips'
+" General Highlighter
+" Plug 'RRethy/vim-hexokinase', { 'do': 'make hexokinase' }
+" Plug 'RRethy/vim-illuminate'
+" Python
+" Plug 'tmhedberg/SimpylFold', { 'for' :['python', 'vim-plug'] }
+" Plug 'Vimjas/vim-python-pep8-indent', { 'for' :['python', 'vim-plug'] }
+Plug 'numirias/semshi', { 'do': ':UpdateRemotePlugins', 'for' :['python', 'vim-plug'] }
+" Plug 'vim-scripts/indentpython.vim', { 'for' :['python', 'vim-plug'] }
+" Plug 'plytophogy/vim-virtualenv', { 'for' :['python', 'vim-plug'] }
+" "Plug 'tweekmonster/braceless.vim', { 'for' :['python', 'vim-plug'] }
 call plug#end()
 " More about Plug
-set t_Co=256
-
 
 
 " ==================
@@ -36,11 +44,17 @@ set t_Co=256
 let g:coc_global_extensions = [
     \ 'coc-json',
     \ 'coc-vimlsp',
-    \ 'coc-python',
+    \ 'coc-pyright',
     \ 'coc-actions',
     \ 'coc-snippets',
     \ 'coc-explorer'
 \]
+
+    "\ 'coc-jedi',
+    "\ 'coc-syntax',
+    "\ 'coc-highlight'
+
+
 " Coc Explorer
 nnoremap <space>e :CocCommand explorer<CR>
 
@@ -60,7 +74,9 @@ autocmd BufRead,BufNewFile tsconfig.json set filetype=jsonc
 "let g:UltiSnipsJumpForwardTrigger = "<c-[>"
 "let g:UltiSnipsJumpBackwardTrigger = "<c-]>"
 
-
+" Color Schema
+colorscheme vscode-dark
+exec 'source ' . s:config_dir . '/utils/semshi_patch.vim'
 
 " =================
 " Free Memory
