@@ -19,8 +19,9 @@ inoremap ( ()<ESC>i
 inoremap [ []<ESC>i
 inoremap { {}<ESC>i
 inoremap < <><ESC>i
-
-
+inoremap " ""<ESC>i
+inoremap ' ''<ESC>i
+inoremap ` ``<ESC>i
 
 " Set <LEADER> as <SPACE>
 let mapleader=" "
@@ -35,7 +36,16 @@ nnoremap <LEADER>ts :%s/\t/    /g
 vnoremap <LEADER>ts :s/\t/    /g
 
 
+" 实现移动行
+nnoremap <s-UP> dd<UP>P
+nnoremap <s-DOWN> ddp
+inoremap <s-UP> <ESC>dd<UP>Pi
+inoremap <s-DOWN> <ESC>ddpi
 
+" sudo save
+" cmap w!! w !sudo tee >/dev/null %
+cmap w!! w !sudo tee %
 
-
+" select all
+map <Leader>sa ggVG"
 
