@@ -2,3 +2,24 @@ snippet st "print"
 print(${0})
 endsnippet
 
+snippet plt "matplotlib single plot code snippet"
+import matplotlib.pyplot as plt
+plt.title('First Image')
+plt.imshow(${1})
+plt.show()
+endsnippet
+
+snippet subplt "matplotlib multiple plot code snippet"
+import matplotlib.pyplot as plt
+plt_rows, plt_colums = 1, 2
+plt.subplot(plt_rows, plt_colums, 1)
+plt.title('First Image')
+plt.imshow(${1})
+plt.subplot(plt_rows, plt_colums, 2)
+plt.title('Second Image')
+plt.imshow(${2})
+plt.show()
+endsnippet
+
+
+
